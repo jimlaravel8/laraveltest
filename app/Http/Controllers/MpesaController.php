@@ -37,7 +37,7 @@ class MpesaController extends Controller
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json','Authorization:Bearer '.$this->generateAccessToken()));
- 
+
         $curl_post_data = [
             //Fill in the request parameters with valid values
             'BusinessShortCode' => 174379,
@@ -117,15 +117,6 @@ class MpesaController extends Controller
 
     public function mpesaConfirmation(Request $request)
     {
-        Log::debug('***************************************************************');
-        Log::debug('***************************************************************');
-        Log::debug('***************************************************************');
-        Log::debug('***************************************************************');
-        Log::debug(($request->getContent()));
-        Log::debug('***************************************************************');
-        Log::debug('***************************************************************');
-        Log::debug('***************************************************************');
-        Log::debug('***************************************************************');
         $content=json_decode($request->getContent());
 
         $mpesa_transaction = new MpesaTransaction();
@@ -171,5 +162,19 @@ class MpesaController extends Controller
         )));
         $curl_response = curl_exec($curl);
         echo $curl_response;
+    }
+
+    public function stk_push(Request $request)
+    {
+        Log::debug('***************************************************************');
+        Log::debug('***************************************************************');
+        Log::debug('***************************************************************');
+        Log::debug('***************************************************************');
+        Log::debug(json_decode($request->getContent()));
+        Log::debug('***************************************************************');
+        Log::debug('***************************************************************');
+        Log::debug('***************************************************************');
+        Log::debug('***************************************************************');
+
     }
 }

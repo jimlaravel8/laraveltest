@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@show');
 Route::post('/', 'HomeController@storePhoneNumber');
 Route::post('/custom', 'HomeController@sendCustomMessage');
+
+
+Route::post('/callback', 'HomeController@laratest');
+

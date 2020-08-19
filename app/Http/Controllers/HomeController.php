@@ -9,6 +9,11 @@ use Twilio\Rest\Client;
 class HomeController extends Controller
 {
 
+    public function laratest()
+    {
+        return view('welcome');
+    }
+
     /**
      * Show the forms with users phone number details.
      *

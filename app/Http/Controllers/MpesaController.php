@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\models\MpesaTransaction;
+use App\models\Stkpush;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -136,7 +137,6 @@ class MpesaController extends Controller
         $mpesa_transaction->LastName = $content->LastName;
         $mpesa_transaction->save();
 
-
         // Responding to the confirmation request
         $response = new Response();
         $response->headers->set("Content-Type","text/xml; charset=utf-8");
@@ -171,11 +171,14 @@ class MpesaController extends Controller
         Log::debug('***************************************************************');
         Log::debug('***************************************************************');
         Log::debug('***************************************************************');
-        Log::debug(json_decode($request->getContent()));
+        Log::debug(($request->getContent()));
         Log::debug('***************************************************************');
         Log::debug('***************************************************************');
         Log::debug('***************************************************************');
         Log::debug('***************************************************************');
 
+        $stk_push = new Stkpush;
+        $stk_push->res_data = serialize($request->getContent());
+        $stk_push->save();
     }
 }

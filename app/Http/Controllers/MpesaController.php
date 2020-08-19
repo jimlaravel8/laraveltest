@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Storage;
 
 class MpesaController extends Controller
 {
-
     /**
      * Lipa na M-PESA password
      * */
@@ -26,7 +25,6 @@ class MpesaController extends Controller
         $lipa_na_mpesa_password = base64_encode($BusinessShortCode.$passkey.$timestamp);
         return $lipa_na_mpesa_password;
     }
-
 
     /**
      * Lipa na M-PESA STK Push method
@@ -50,7 +48,7 @@ class MpesaController extends Controller
             'PartyA' => 254743895505, // replace this with your phone number
             'PartyB' => 174379,
             'PhoneNumber' => 254743895505, // replace this with your phone number
-            'CallBackURL' => 'https://laratest.swapstore.co.ke/api/v1/laratest/transaction/confirmation',
+            'CallBackURL' => 'https://apptest.swapstore.co.ke/api/v1/laratest/transaction/confirmation',
             'AccountReference' => "Laravel app",
             'TransactionDesc' => "Testing stk push on sandbox"
         ];
@@ -70,11 +68,10 @@ class MpesaController extends Controller
         return $curl_response;
     }
 
-
     public function generateAccessToken()
     {
-        $consumer_key=env('MPESA_CUSTOMER_KEY', 'WVzUbz1YF3H9P8j5jm1vo4vkuRA6wWvO');
-        $consumer_secret=env('MPESA_SECRET', '7hDmi0SuwrVjWd2A');
+        $consumer_key=env('MPESA_CUSTOMER_KEY', 'mdRZ2GNPrDuOtG9LZhmPgO6KUqamZQox');
+        $consumer_secret=env('MPESA_SECRET', 'yGbCJfW1GXbhdhL2');
         $credentials = base64_encode($consumer_key.":".$consumer_secret);
 
         $url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials";
@@ -153,7 +150,6 @@ class MpesaController extends Controller
         $response->headers->set("Content-Type","text/xml; charset=utf-8");
         $response->setContent(json_encode(["C2BPaymentConfirmationResult"=>"Success"]));
 
-
         return $response;
     }
 
@@ -170,8 +166,8 @@ class MpesaController extends Controller
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode(array(
             'ShortCode' => "174379",
             'ResponseType' => 'Completed',
-            'ConfirmationURL' => "https://laratest.swapstore.co.ke/api/v1/laratest/transaction/confirmation",
-            'ValidationURL' => "https://laratest.swapstore.co.ke/api/v1/laratest/validation"
+            'ConfirmationURL' => "https://apptest.swapstore.co.ke/api/v1/laratest/transaction/confirmation",
+            'ValidationURL' => "https://apptest.swapstore.co.ke/api/v1/laratest/validation"
         )));
         $curl_response = curl_exec($curl);
         echo $curl_response;

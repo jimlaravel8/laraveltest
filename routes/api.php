@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('v1/stk_push', 'MpesaController@stk_push');
 
 Route::post('v1/access/token', 'MpesaController@generateAccessToken');
 Route::post('v1/laratest/stk/push', 'MpesaController@customerMpesaSTKPush');

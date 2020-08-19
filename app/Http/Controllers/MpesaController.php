@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class MpesaController extends Controller
@@ -38,7 +39,7 @@ class MpesaController extends Controller
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json','Authorization:Bearer '.$this->generateAccessToken()));
 
-
+        Log::debug('*******************');
         $curl_post_data = [
             //Fill in the request parameters with valid values
             'BusinessShortCode' => 174379,
@@ -53,7 +54,11 @@ class MpesaController extends Controller
             'AccountReference' => "Laravel app",
             'TransactionDesc' => "Testing stk push on sandbox"
         ];
+        Log::debug('*******************');
 
+        Log::debug($curl_post_data);
+
+        Log::debug('*******************');
         $data_string = json_encode($curl_post_data);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

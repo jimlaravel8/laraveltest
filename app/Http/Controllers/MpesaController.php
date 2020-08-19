@@ -50,7 +50,7 @@ class MpesaController extends Controller
             'PartyA' => 254743895505, // replace this with your phone number
             'PartyB' => 174379,
             'PhoneNumber' => 254743895505, // replace this with your phone number
-            'CallBackURL' => 'https://laratest.swapstore.co.ke',
+            'CallBackURL' => 'https://laratest.swapstore.co.ke/api/v1/laratest/transaction/confirmation',
             'AccountReference' => "Laravel app",
             'TransactionDesc' => "Testing stk push on sandbox"
         ];

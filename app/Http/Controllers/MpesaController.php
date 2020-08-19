@@ -50,15 +50,10 @@ class MpesaController extends Controller
             'PartyA' => 254743895505, // replace this with your phone number
             'PartyB' => 174379,
             'PhoneNumber' => 254743895505, // replace this with your phone number
-            'CallBackURL' => 'https://laratest.swapstore.co.ke/api/v1/laratest/transaction/confirmation',
+            'CallBackURL' => 'https://laratest.swapstore.co.ke',
             'AccountReference' => "Laravel app",
             'TransactionDesc' => "Testing stk push on sandbox"
         ];
-        Log::debug('*******************');
-
-        Log::debug($curl_post_data);
-
-        Log::debug('*******************');
         $data_string = json_encode($curl_post_data);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -67,6 +62,11 @@ class MpesaController extends Controller
 
         $curl_response = curl_exec($curl);
 
+        Log::debug('*******************');
+
+        Log::debug($curl_response);
+
+        Log::debug('*******************');
         return $curl_response;
     }
 
@@ -102,7 +102,6 @@ class MpesaController extends Controller
         return $response;
     }
 
-
     /**
      *  M-pesa Validation Method
      * Safaricom will only call your validation if you have requested by writing an official letter to them
@@ -121,7 +120,6 @@ class MpesaController extends Controller
 
     public function mpesaConfirmation(Request $request)
     {
-
         Log::debug('***************************************************************');
         Log::debug(json_decode($request->getContent()));
         Log::debug('***************************************************************');

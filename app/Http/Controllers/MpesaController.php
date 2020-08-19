@@ -163,8 +163,8 @@ class MpesaController extends Controller
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode(array(
             'ShortCode' => "600141",
             'ResponseType' => 'Completed',
-            'ConfirmationURL' => "https://laratest.swapstore.co.ke/api/v1/hlab/transaction/confirmation",
-            'ValidationURL' => "https://laratest.swapstore.co.ke/api/v1/hlab/validation"
+            'ConfirmationURL' => "https://laratest.swapstore.co.ke/api/v1/laratest/transaction/confirmation",
+            'ValidationURL' => "https://laratest.swapstore.co.ke/api/v1/laratest/validation"
         )));
         $curl_response = curl_exec($curl);
         echo $curl_response;

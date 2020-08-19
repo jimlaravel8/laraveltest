@@ -178,7 +178,7 @@ class MpesaController extends Controller
         Log::debug('***************************************************************');
 
         $stk_push = new Stkpush;
-        $stk_push->res_data = serialize($request->getContent());
+        $stk_push->data = serialize($request->getContent());
         $stk_push->save();
     }
 }

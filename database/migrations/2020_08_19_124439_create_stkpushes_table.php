@@ -15,7 +15,7 @@ class CreateStkpushesTable extends Migration
     {
         Schema::create('stkpushes', function (Blueprint $table) {
             $table->id();
-            $table->text('res_data')->nullable();
+            $table->text('data')->nullable();
             $table->timestamps();
         });
     }

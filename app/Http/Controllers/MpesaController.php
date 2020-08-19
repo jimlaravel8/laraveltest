@@ -40,7 +40,6 @@ class MpesaController extends Controller
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json','Authorization:Bearer '.$this->generateAccessToken()));
 
-        Log::debug('*******************');
         $curl_post_data = [
             //Fill in the request parameters with valid values
             'BusinessShortCode' => 174379,
@@ -123,9 +122,9 @@ class MpesaController extends Controller
     public function mpesaConfirmation(Request $request)
     {
 
-        Log::debug('*******************');
+        Log::debug('***************************************************************');
         Log::debug(json_decode($request->getContent()));
-        Log::debug('*******************');
+        Log::debug('***************************************************************');
         $content=json_decode($request->getContent());
 
         $mpesa_transaction = new MpesaTransaction();

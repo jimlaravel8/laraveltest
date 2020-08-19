@@ -122,6 +122,10 @@ class MpesaController extends Controller
 
     public function mpesaConfirmation(Request $request)
     {
+
+        Log::debug('*******************');
+        Log::debug(json_decode($request->getContent()));
+        Log::debug('*******************');
         $content=json_decode($request->getContent());
 
         $mpesa_transaction = new MpesaTransaction();

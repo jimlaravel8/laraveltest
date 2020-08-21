@@ -49,8 +49,8 @@ class MpesaController extends Controller
             'PartyA' => 254743895505, // replace this with your phone number
             'PartyB' => 174379,
             'PhoneNumber' => 254743895505, // replace this with your phone number
-            'CallBackURL' => 'https://apptest.swapstore.co.ke/api/v1/stk_push',
-            // 'CallBackURL' => 'https://apptest.swapstore.co.ke/api/v1/laratest/transaction/confirmation',
+            'CallBackURL' => 'https://apptest.nyumbanimart.co.ke/api/v1/stk_push',
+            // 'CallBackURL' => 'https://apptest.nyumbanimart.co.ke/api/v1/laratest/transaction/confirmation',
             'AccountReference' => "Laravel app",
             'TransactionDesc' => "Testing stk push on sandbox"
         ];
@@ -166,8 +166,8 @@ class MpesaController extends Controller
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode(array(
             'ShortCode' => "174379",
             'ResponseType' => 'Completed',
-            'ConfirmationURL' => "https://apptest.swapstore.co.ke/api/v1/laratest/transaction/confirmation",
-            'ValidationURL' => "https://apptest.swapstore.co.ke/api/v1/laratest/validation"
+            'ConfirmationURL' => "https://apptest.nyumbanimart.co.ke/api/v1/laratest/transaction/confirmation",
+            'ValidationURL' => "https://apptest.nyumbanimart.co.ke/api/v1/laratest/validation"
         )));
         $curl_response = curl_exec($curl);
         echo $curl_response;
